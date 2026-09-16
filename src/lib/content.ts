@@ -4,7 +4,6 @@
 
 export const LINKS = {
   email: "rishithchennupati@gmail.com",
-  founder: "https://rishithc.com",
 };
 
 export const CLUB = "Leland Hackathon Club";

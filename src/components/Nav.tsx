@@ -15,9 +15,6 @@ export default function Nav() {
       </a>
 
       <nav className="rail-links" aria-label="Links">
-        <a href={LINKS.founder} target="_blank" rel="noopener noreferrer">
-          Founder
-        </a>
         <a href={JOIN_MAIL}>Join</a>
       </nav>
     </header>
