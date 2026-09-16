@@ -142,14 +142,50 @@ a { color: inherit; }
   isolation: isolate;
 }
 
-/* A still, monochrome light in the corner. */
-.void-glow {
+/* Behind the type is the vgpu Optimized Black Hole, same source as
+   rishithc.com: a relativistic ray traversal baked once into a G-buffer and
+   reused every frame for the disk, the stars, the antialiasing and the bloom. */
+.void-gpu {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Underneath the canvas: what shows during prewarm, and what stays when
+   there is no WebGPU adapter or the visitor has asked for reduced motion.
+   A still disk rather than an empty black box. */
+.void-fallback {
   position: absolute;
   inset: 0;
   z-index: 0;
   background:
-    radial-gradient(42% 50% at 78% 30%, rgba(236, 234, 231, 0.22), rgba(236, 234, 231, 0.04) 60%, transparent 78%),
+    radial-gradient(38% 46% at 76% 34%, rgba(236, 234, 231, 0.5), rgba(236, 234, 231, 0.07) 62%, transparent 78%),
+    radial-gradient(closest-side circle at 76% 34%, #000 0 62%, rgba(0, 0, 0, 0) 64%),
     radial-gradient(130% 110% at 70% 30%, #101112, #000 62%);
+}
+
+/* The canvas sits above the fallback and is held until the renderer reports
+   its first presented frame; fading in on mount would show a black rectangle
+   through the prewarm. */
+.gpu-scene { position: absolute; inset: 0; }
+
+.gpu-canvas {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  opacity: 0;
+  transition: opacity 1100ms var(--ease-out);
+}
+
+.gpu-scene.is-ready .gpu-canvas { opacity: 1; }
+
+/* The words at the bottom cross the bright side of the disk; a scrim with no
+   top edge keeps them legible without boxing the render. */
+.tickers {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.7));
 }
 
 .void-in {

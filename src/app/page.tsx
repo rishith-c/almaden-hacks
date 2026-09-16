@@ -2,6 +2,7 @@ import Nav from "@/components/Nav";
 import Reveal from "@/components/Reveal";
 import Clock from "@/components/Clock";
 import Ticker from "@/components/Ticker";
+import BlackHole from "@/components/BlackHole";
 import { INTRO, TICKER, TICKER_SMALL, LINKS, CLUB } from "@/lib/content";
 
 /** Arrow used on the outbound action. */
@@ -27,7 +28,7 @@ export default function HomePage() {
         {/* One screen. Name, one line, one action, the clock, and the words
             running across the bottom. */}
         <section className="void">
-          <div className="void-glow" aria-hidden />
+          <BlackHole />
 
           <div className="wrap void-in">
             <div>
