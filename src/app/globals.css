@@ -270,6 +270,7 @@ a { color: inherit; }
 .band > .grid-lines { clip-path: inset(0); }
 .band--end { padding-bottom: clamp(40px, 6vh, 60px); }
 .end { display: grid; justify-items: center; text-align: center; }
+.end .note { margin-top: clamp(18px, 3vh, 28px); }
 
 /* Two-column band: heading and note on the left, the list on the right. */
 .split {
