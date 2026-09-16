@@ -5,7 +5,6 @@
 
 import { LINKS } from "@/lib/content";
 
-const JOIN_MAIL = `mailto:${LINKS.email}?subject=${encodeURIComponent("Joining the Hackathon Club")}`;
 
 export default function Nav() {
   return (
@@ -15,7 +14,9 @@ export default function Nav() {
       </a>
 
       <nav className="rail-links" aria-label="Links">
-        <a href={JOIN_MAIL}>Join</a>
+        <a href={LINKS.signup} target="_blank" rel="noopener noreferrer">
+          Join
+        </a>
       </nav>
     </header>
   );

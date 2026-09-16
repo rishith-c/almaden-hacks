@@ -14,8 +14,6 @@ function Out() {
   );
 }
 
-const JOIN_MAIL = `mailto:${LINKS.email}?subject=${encodeURIComponent("Joining the Hackathon Club")}`;
-
 export default function HomePage() {
   const thisYear = new Date().getFullYear();
 
@@ -44,7 +42,7 @@ export default function HomePage() {
               <p className="hero-line">{INTRO}</p>
 
               <div className="hero-cta">
-                <a className="slab" href={JOIN_MAIL}>
+                <a className="slab" href={LINKS.signup} target="_blank" rel="noopener noreferrer">
                   <span>Join the club</span>
                   <i aria-hidden>
                     <Out />

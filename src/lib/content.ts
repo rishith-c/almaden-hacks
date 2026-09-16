@@ -3,7 +3,7 @@
  */
 
 export const LINKS = {
-  email: "rishithchennupati@gmail.com",
+  signup: "https://forms.gle/vErNuDXA39DJNR8CA",
 };
 
 export const CLUB = "Leland Hackathon Club";
