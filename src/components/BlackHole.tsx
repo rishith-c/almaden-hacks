@@ -1,6 +1,7 @@
 "use client";
 
 import GpuScene from "./GpuScene";
+import FallbackHole from "./FallbackHole";
 
 /**
  * The cold open. Everything under ./blackhole is the verified vgpu gallery
@@ -13,6 +14,7 @@ export default function BlackHole() {
       load={() => import("./blackhole/renderer")}
       className="void-gpu"
       fallbackClassName="void-fallback"
+      fallback={<FallbackHole />}
     />
   );
 }

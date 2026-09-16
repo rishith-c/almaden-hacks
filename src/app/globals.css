@@ -182,6 +182,21 @@ a { color: inherit; }
 
 .gpu-scene.is-ready .gpu-canvas { opacity: 1; }
 
+/* The WebGL stand-in, mounted only when WebGPU is not there. Sits above
+   the still gradient and fades in on its first drawn frame. */
+.fallback-canvas {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1100ms var(--ease-out);
+}
+
+.fallback-canvas.is-drawn { opacity: 1; }
+
 /* The words at the bottom cross the bright side of the disk; a scrim with no
    top edge keeps them legible without boxing the render. */
 .tickers {

@@ -25,11 +25,14 @@ export default function GpuScene({
   load,
   className,
   fallbackClassName,
+  fallback,
 }: {
   /** Must be an inline arrow with a literal specifier so the bundler can see it. */
   load: () => Promise<{ createRenderer: (o: { canvas: HTMLCanvasElement }) => Renderer }>;
   className: string;
   fallbackClassName: string;
+  /** Mounted only once the WebGPU renderer has definitively failed. */
+  fallback?: React.ReactNode;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [state, setState] = useState<"loading" | "ready" | "unavailable">("loading");
@@ -38,8 +41,12 @@ export default function GpuScene({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    /* Respect the OS setting: these scenes all animate continuously. */
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    /* Respect the OS setting: these scenes all animate continuously.
+       `?fallback` forces the no-WebGPU path so it can be checked anywhere. */
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      new URLSearchParams(window.location.search).has("fallback")
+    ) {
       setState("unavailable");
       return;
     }
@@ -73,6 +80,7 @@ export default function GpuScene({
     <div className={`${className} gpu-scene is-${state}`} aria-hidden>
       <canvas ref={canvasRef} className="gpu-canvas" />
       <div className={fallbackClassName} />
+      {state === "unavailable" && fallback}
     </div>
   );
 }
