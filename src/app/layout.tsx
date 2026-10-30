@@ -22,9 +22,10 @@ const serif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Leland Hackathon Club",
+  metadataBase: new URL("https://almadenhacks.vercel.app"),
+  title: "Almaden Hacks",
   description:
-    "A club at Leland High School that trains you to win hackathons, goes to them as a team, and hosts Almaden Hacks at the end of the year.",
+    "A student-built high school hackathon from the heart of Almaden Valley. Presented by Leland High School. May–June, San Jose.",
   keywords: [
     "hackathon club",
     "leland high school",
@@ -34,15 +35,15 @@ export const metadata: Metadata = {
     "usaai",
   ],
   openGraph: {
-    title: "Leland Hackathon Club",
-    description: "Learn to win hackathons. Then host one.",
-    siteName: "Leland Hackathon Club",
+    title: "Almaden Hacks",
+    description: "Big ideas. A little wild ambition. A high school hackathon from the heart of Almaden.",
+    siteName: "Almaden Hacks",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Leland Hackathon Club",
-    description: "Learn to win hackathons. Then host one.",
+    title: "Almaden Hacks",
+    description: "Big ideas. A little wild ambition. A high school hackathon from the heart of Almaden.",
   },
 };
 

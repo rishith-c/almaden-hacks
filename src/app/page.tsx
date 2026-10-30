@@ -1,69 +1,35 @@
 import Nav from "@/components/Nav";
-import Reveal from "@/components/Reveal";
-import Clock from "@/components/Clock";
-import Ticker from "@/components/Ticker";
-import BlackHole from "@/components/BlackHole";
-import { INTRO, TICKER, TICKER_SMALL, LINKS, CLUB } from "@/lib/content";
+import Horses from "@/components/Horses";
+import EventActions from "@/components/EventActions";
 
-/** Arrow used on the outbound action. */
-function Out() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden>
-      <path d="M7 17 17 7M9 7h8v8" />
-    </svg>
-  );
+function Mountains({ className = "" }: { className?: string }) {
+  return <svg className={`mountains ${className}`} viewBox="0 0 1440 330" preserveAspectRatio="none" aria-hidden="true"><path fill="#dce5e6" d="M0 170 100 130 200 154 355 56 438 107 525 35 650 138 790 75 890 151 1035 48 1150 128 1260 83 1440 143V330H0Z"/><path fill="#b8cbcc" d="m0 220 150-85 125 54 190-82 138 104 140-65 158 91 172-110 180 79 187-38v162H0Z"/><path fill="#849f9e" d="m0 257 190-56 158 42 174-53 184 67 185-58 190 60 166-43 193 45v69H0Z"/><path fill="#355d5a" d="M0 300q200-72 400-6t400 0 640 6v30H0Z"/></svg>;
 }
-
-export default function HomePage() {
-  const thisYear = new Date().getFullYear();
-
-  return (
-    <>
-      <Reveal />
-      <Nav />
-
-      <main id="top">
-        {/* One screen. Name, one line, one action, the clock, and the words
-            running across the bottom. */}
-        <section className="void">
-          <BlackHole />
-
-          <div className="wrap void-in">
-            <div>
-              <h1 className="mega" data-reveal="lines">
-                <span className="mega-line">
-                  <span>Learn to win</span>
-                </span>
-                <span className="mega-line">
-                  <span className="serif">hackathons.</span>
-                </span>
-              </h1>
-
-              <p className="hero-line">{INTRO}</p>
-
-              <div className="hero-cta">
-                <a className="slab" href={LINKS.signup} target="_blank" rel="noopener noreferrer">
-                  <span>Join the club</span>
-                  <i aria-hidden>
-                    <Out />
-                  </i>
-                </a>
-              </div>
-            </div>
-
-            <Clock />
-          </div>
-
-          <div className="tickers" data-reveal>
-            <Ticker words={TICKER} dir="left" speed={46} size="lg" />
-            <Ticker words={TICKER_SMALL} dir="right" speed={32} size="sm" />
-          </div>
-
-          <p className="foot" aria-hidden>
-            © {thisYear} {CLUB} · San Jose, California
-          </p>
-        </section>
-      </main>
-    </>
-  );
+const faqs = [
+  ["What is a hackathon, anyway?", "A hackathon is a chance to turn an idea into a working project with other people. Think apps, games, websites, hardware, and a lot of creative problem-solving. You build something, then show what you made."],
+  ["Is this for me if I’ve never coded?", "Yes. Almaden Hacks is being built for high school students at every experience level. Curiosity matters more than a résumé. We’ll share beginner resources and event details before registration opens."],
+  ["Do I have to go to Leland?", "Almaden Hacks is presented by students at Leland High School, with the wider high school community in mind. Full eligibility details will be included when registration opens."],
+  ["When and where is it happening?", "We’re targeting May–June in the Almaden Valley area of San Jose. The exact date and venue are still being finalized. We’ll announce both before registration opens."],
+  ["Do I need to bring a team?", "You can start with friends or come ready to meet people. Team formation and team-size details will be shared with the event announcement."],
+  ["What should I bring?", "A laptop, its charger, and a willingness to try something new. We’ll publish a complete packing list and any event-specific requirements closer to the day."],
+  ["Can I sponsor or help out?", "Absolutely. Local businesses, mentors, and community supporters can help bring Almaden Hacks to life. You can support the event through our HCB page; more partnership details will be announced soon."],
+];
+export default function Home() {
+  return <>
+    <a className="skip-link" href="#main">Skip to content</a><Nav />
+    <main id="main">
+      <section className="hero" id="top">
+        <div className="hero-copy"><p className="presented">Leland High School presents</p><h1>Almaden Hacks<span className="title-star" aria-hidden="true">✳</span></h1><p className="hero-description">Big ideas. A little wild ambition.<br/>A high school hackathon from the heart of Almaden.</p><div className="hero-actions"><EventActions /><a className="text-link" href="#about">Take a look around <span aria-hidden="true">↓</span></a></div><p className="event-meta"><span className="status-dot"/>May–June <span className="meta-divider">/</span> San Jose, CA <span className="meta-divider">/</span> Dates coming soon</p></div>
+        <div className="hero-landscape"><div className="landscape-sun"/><Mountains /><Horses /><p className="landscape-caption">A little horsepower. A lot of possibility.</p></div>
+        <div className="hero-bottom"><span>Made by students. Open to possibility.</span><a href="#about">The story starts here <span aria-hidden="true">↓</span></a></div>
+      </section>
+      <section className="about section-wrap" id="about"><div className="section-kicker"><span className="little-star">✳</span> A new starting line</div><div className="about-grid"><h2>Good things happen<br/>when curious people<br/>build together.</h2><div className="about-copy"><p className="lead">From the foothills to your first big idea.</p><p>Almaden Hacks brings the energy of a hackathon to our corner of San Jose. A place to meet your people, try something ambitious, and make a project you didn’t think you could.</p><p>You don’t need a polished pitch or years of experience. Bring a half-formed idea and the urge to see it through. We’ll take it from there, together.</p><a className="text-link" href="#community">Find your people <span aria-hidden="true">↗</span></a></div></div><div className="experience-grid"><article><span className="experience-icon">⌘</span><h3>Make something yours.</h3><p>A useful app. A strange little game. A robot with a purpose. Start with what makes you curious.</p></article><article><span className="experience-icon">↗</span><h3>Get a little further.</h3><p>Trade ideas, work through a problem, and learn by doing. Your first project is a good place to start.</p></article><article><span className="experience-icon">✳</span><h3>Leave with your people.</h3><p>Meet other students who get excited about making things. The project is just the beginning.</p></article></div></section>
+      <section className="schedule" id="schedule"><div className="section-wrap schedule-grid"><div><p className="section-kicker">Room for a very good day</p><h2>Come with an idea.<br/>Leave with a story.</h2><p className="schedule-note">Our May–June event is taking shape. Here’s the flow we’re planning; exact times will follow.</p><EventActions className="button button-light" /></div><ol className="timeline">{[["Meet & dream", "Find your team, settle in, and put your idea on the table."], ["Build & explore", "Make a first version. Break it. Make it better. Learn something along the way."], ["Show & celebrate", "Share what you made, see what everyone else built, and celebrate the work."]].map(([title, text], i) => <li key={title}><span className="timeline-number">0{i + 1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol></div></section>
+      <section className="community section-wrap" id="community"><div className="community-art" aria-hidden="true"><span className="community-orbit orbit-one"/><span className="community-orbit orbit-two"/><span className="community-center">hello,<br/><i>future team.</i></span><span className="orbit-spark spark-one">✳</span><span className="orbit-spark spark-two">+</span></div><div className="community-copy"><p className="section-kicker">There’s a place for you here</p><h2>The best part?<br/>The people.</h2><p>Find a teammate, swap an idea, or just say hello. Our Discord will be home base for event announcements and the conversations that happen before the first line of code.</p><EventActions kind="discord" /><span className="availability">Community invite coming soon</span></div></section>
+      <section className="sponsors section-wrap" id="sponsors"><div className="sponsor-heading"><div><p className="section-kicker">Help the next idea get started</p><h2>A little support.<br/>A whole lot of possibility.</h2></div><p>Great events are a community effort. Help us make room for the next generation of builders.</p></div><div className="sponsor-board"><div className="sponsor-callout"><span className="sponsor-symbol" aria-hidden="true">✳</span><h3>Your support belongs here.</h3><p>We’re welcoming our founding sponsors.<br/>The first chapter is still being written.</p><a className="button" href="https://hcb.hackclub.com/almaden-hacks" target="_blank" rel="noreferrer">Support Almaden Hacks <span aria-hidden="true">↗</span></a></div><div className="sponsor-side"><span>Ways to make a difference</span><p>Fuel the day.</p><p>Share your experience.</p><p>Back a new generation.</p><small>Sponsor announcements coming soon.</small></div></div></section>
+      <section className="faq section-wrap" id="faq"><div><p className="section-kicker">A few things you might be wondering</p><h2>Good questions.</h2><p>First hackathon?<br/>You’re in good company.</p></div><div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></section>
+      <section className="closing"><Mountains/><div className="closing-copy"><p>Leland High School presents</p><h2>See you at<br/>the starting line.</h2><EventActions /><span>Almaden Valley, San Jose · May–June</span></div></section>
+    </main>
+    <footer className="footer"><div className="footer-top"><a className="footer-wordmark" href="#top">Almaden Hacks<span>✳</span></a><div><a href="#about">About</a><a href="#sponsors">Sponsorship</a><a href="#faq">FAQ</a></div><a href="#top" className="back-top">Back to top ↑</a></div><div className="footer-bottom"><span>Built with a little wild ambition in Almaden.</span><a href="https://hcb.hackclub.com/almaden-hacks" target="_blank" rel="noreferrer">Fiscally sponsored by HCB</a></div></footer>
+  </>;
 }
