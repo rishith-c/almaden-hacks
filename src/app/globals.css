@@ -33,3 +33,25 @@
 
 .design-credit { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding-top: 18px; font-size: 10px; color: #b5c7bd; }
 .design-credit a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Keep the complete horse scene in the first desktop viewport. */
+.brand-mark { display: block; width: 38px; height: 38px; flex: none; }
+.brand { gap: 11px; }
+.hero { height: 100svh; min-height: 600px; display: flex; flex-direction: column; padding-top: 100px; }
+.hero-copy { flex: none; }
+.hero h1 { font-size: clamp(64px, min(10vw, 14svh), 140px); }
+.presented { margin-bottom: 10px; }
+.hero-description { margin-top: 10px; line-height: 1.55; }
+.hero-actions { margin-top: 18px; }
+.event-meta { margin-top: 14px; }
+.hero-landscape { flex: 1; min-height: 200px; height: auto; margin-top: 0; }
+.horse-art { height: 100%; max-width: 1120px; }
+.hero-bottom { flex: none; padding-top: 13px; padding-bottom: 13px; }
+@media(max-width:650px) {
+  .brand-mark { width: 33px; height: 33px; }
+  .hero { height: auto; min-height: 0; padding-top: 112px; }
+  .hero h1 { font-size: clamp(58px, 13vw, 84px); }
+  .hero-description { margin-top: 18px; }
+  .hero-landscape { flex: none; height: 250px; min-height: 0; margin-top: 12px; }
+  .horse-art { height: 100%; }
+}

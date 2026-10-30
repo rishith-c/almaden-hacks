@@ -1,13 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Horses() {
   const canvas = useRef<HTMLCanvasElement>(null);
-  const [paused, setPaused] = useState(false);
-  const pauseRef = useRef(false);
-  pauseRef.current = paused;
-  const [run, setRun] = useState(0);
   useEffect(() => {
     const element = canvas.current;
     if (!element) return;
@@ -29,7 +25,6 @@ export default function Horses() {
       frame = 0;
       if (disposed || !loaded || !visible || document.hidden) return;
       if (motion) frame = requestAnimationFrame(draw);
-      if (pauseRef.current) { if (last) started += now - last; last = now; return; }
       if (now - last < 80 && last) return;
       last = now;
       if (!started) started = now;
@@ -56,9 +51,9 @@ export default function Horses() {
       const frameWidth = image.width / 4;
       const frameHeight = image.height / 2;
       const horses = [
-        { x: 0.45, y: 0.38, size: 0.41, depth: 0.92, phase: 3, opacity: 0.62 },
-        { x: 0.20, y: 0.55, size: 0.48, depth: 1.13, phase: 6, opacity: 0.85 },
-        { x: 0.75, y: 0.55, size: 0.59, depth: 1.4, phase: 0, opacity: 1 },
+        { x: 0.45, y: 0.38, size: 0.41, depth: 0.86, phase: 3, opacity: 0.62 },
+        { x: 0.20, y: 0.52, size: 0.48, depth: 1.0, phase: 6, opacity: 0.85 },
+        { x: 0.75, y: 0.52, size: 0.59, depth: 1.12, phase: 0, opacity: 1 },
       ];
       s.globalCompositeOperation = "multiply";
       for (const horse of horses) {
@@ -122,6 +117,6 @@ export default function Horses() {
       window.removeEventListener("resize", start);
       document.removeEventListener("visibilitychange", visibility);
     };
-  }, [run]);
-  return <div className="horse-art"><canvas ref={canvas} role="img" aria-label="Three realistic horses galloping in animated blue ASCII, each at a different depth" /><button className="pause-art" aria-label={paused ? "Resume horse animation" : "Pause horse animation"} aria-pressed={paused} onClick={() => setPaused(!paused)}>{paused ? "Play" : "Pause"}</button><button className="replay-art" onClick={() => { setPaused(false); setRun(value => value + 1); }} aria-label="Replay the three-second horse entrance">↻ <span>Replay the charge</span></button></div>;
+  }, []);
+  return <div className="horse-art"><canvas ref={canvas} role="img" aria-label="Three realistic horses galloping in animated blue ASCII, each at a different depth" /></div>;
 }
