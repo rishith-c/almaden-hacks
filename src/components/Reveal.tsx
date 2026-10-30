@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 /**
  * Scroll reveal. Anything marked [data-reveal] gets `is-in` when it enters
- * view; [data-reveal="stagger"] cascades its children. Everything reveals
+ * view; headline lines receive staggered delays. Everything reveals
  * immediately under prefers-reduced-motion, since the motion is decorative
  * and the content is not.
  */
@@ -41,7 +41,7 @@ export default function Reveal() {
     };
 
     targets.forEach((el) => {
-      if (el.dataset.reveal === "stagger" || el.dataset.reveal === "lines") {
+      if (el.dataset.reveal === "lines") {
         Array.from(el.children).forEach((c, i) =>
           (c as HTMLElement).style.setProperty("--i", String(i)),
         );
@@ -62,3 +62,4 @@ export default function Reveal() {
 
   return null;
 }
+

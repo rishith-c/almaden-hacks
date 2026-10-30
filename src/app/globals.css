@@ -10,10 +10,8 @@
    ═══════════════════════════════════════════════════════════════════ */
 
 :root {
-  --night: #000000;
   --paper: #08090b;
 
-  --accent: #f2f1ef;
   --ink: #f2f1ef;
   --ink-2: #a3a2a0;
   --ink-3: #7d7c7a;
@@ -21,7 +19,6 @@
 
   --wrap: 1280px;
   --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 * { box-sizing: border-box; }
@@ -48,7 +45,7 @@ a { color: inherit; }
 ::selection { background: var(--ink); color: var(--paper); }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--ink);
   outline-offset: 3px;
   border-radius: 3px;
 }
@@ -91,7 +88,7 @@ a { color: inherit; }
   font-size: 0.34em;
   letter-spacing: 0.08em;
   vertical-align: super;
-  color: var(--accent);
+  color: var(--ink);
 }
 
 .rail-links { display: flex; margin-left: auto; gap: clamp(20px, 3.6vw, 56px); }
@@ -196,12 +193,6 @@ a { color: inherit; }
 }
 
 .fallback-canvas.is-drawn { opacity: 1; }
-
-/* The words at the bottom cross the bright side of the disk; a scrim with no
-   top edge keeps them legible without boxing the render. */
-.tickers {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.7));
-}
 
 .void-in {
   display: grid;
@@ -316,6 +307,8 @@ a { color: inherit; }
    opposite directions. Full bleed: the wrap's gutters would make the text
    appear from nowhere 56px inside the edge. */
 .tickers {
+  /* Keep text legible where it crosses the bright side of the disk. */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.7));
   position: relative;
   z-index: 2;
   display: grid;
@@ -453,3 +446,4 @@ a { color: inherit; }
 
   .tk-track { animation: none; }
 }
+
