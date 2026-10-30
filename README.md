@@ -2,7 +2,9 @@
 
 A scrolling event site for Almaden Hacks, presented by Leland High School.
 Next.js 16 and React 19. Original equestrian artwork is rendered as ASCII in a
-three-second entrance, with replay and reduced-motion support.
+three-second entrance followed by an eight-frame gallop cycle, with pause, replay,
+visibility-based suspension, and reduced-motion support. Four textured ridge
+planes provide atmospheric depth and pointer parallax.
 
 ## Develop
 
