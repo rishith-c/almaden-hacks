@@ -47,8 +47,8 @@ export default function GpuScene({
       window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
       new URLSearchParams(window.location.search).has("fallback")
     ) {
-      setState("unavailable");
-      return;
+      const frame = requestAnimationFrame(() => setState("unavailable"));
+      return () => cancelAnimationFrame(frame);
     }
 
     let cancelled = false;

@@ -40,11 +40,14 @@ const hash = (x: number, y: number, z: number) => {
 export default function AsciiCanvas({ label, className = "", layers, cell = w => (w < 600 ? 4 : 5), fps = 20, lens = false, reveal = false, still = 3 }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
   const scene = useRef(layers);
-  scene.current = layers;
   const cellOf = useRef(cell);
-  cellOf.current = cell;
   const lensRef = useRef(lens);
-  lensRef.current = lens;
+
+  useEffect(() => {
+    scene.current = layers;
+    cellOf.current = cell;
+    lensRef.current = lens;
+  }, [layers, cell, lens]);
 
   useEffect(() => {
     const canvas = ref.current;
