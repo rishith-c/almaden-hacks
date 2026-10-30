@@ -51,9 +51,9 @@ export default function Horses() {
       const frameWidth = image.width / 4;
       const frameHeight = image.height / 2;
       const horses = [
-        { x: 0.45, y: 0.38, size: 0.41, depth: 0.86, phase: 3, opacity: 0.62 },
-        { x: 0.20, y: 0.52, size: 0.48, depth: 1.0, phase: 6, opacity: 0.85 },
-        { x: 0.75, y: 0.52, size: 0.59, depth: 1.12, phase: 0, opacity: 1 },
+        { x: 0.49, y: 0.42, size: 0.43, depth: 1.03, phase: 3, opacity: 0.62 },
+        { x: 0.16, y: 0.50, size: 0.46, depth: 1.18, phase: 6, opacity: 0.85 },
+        { x: 0.83, y: 0.50, size: 0.46, depth: 1.18, phase: 0, opacity: 1 },
       ];
       s.globalCompositeOperation = "multiply";
       for (const horse of horses) {
