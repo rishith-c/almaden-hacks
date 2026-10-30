@@ -2,6 +2,9 @@ import Mountains from "@/components/Mountains";
 import Nav from "@/components/Nav";
 import Horses from "@/components/Horses";
 import EventActions from "@/components/EventActions";
+import Reveal from "@/components/Reveal";
+import Scramble from "@/components/Scramble";
+import { AsciiText, Constellation, DaySky, Donut, Ridgeline } from "@/components/AsciiScenes";
 
 const faqs = [
   ["What is a hackathon, anyway?", "A hackathon is a chance to turn an idea into a working project with other people. Think apps, games, websites, hardware, and a lot of creative problem-solving. You build something, then show what you made."],
@@ -14,20 +17,62 @@ const faqs = [
 ];
 export default function Home() {
   return <>
-    <a className="skip-link" href="#main">Skip to content</a><Nav />
+    <a className="skip-link" href="#main">Skip to content</a><Nav /><Reveal />
     <main id="main">
       <section className="hero" id="top">
-        <div className="hero-copy"><p className="presented">Leland High School presents</p><h1>Almaden Hacks</h1><p className="hero-description">Big ideas. A little wild ambition.<br/>A high school hackathon from the heart of Almaden.</p><div className="hero-actions"><EventActions /><a className="text-link" href="#about">Take a look around <span aria-hidden="true">↓</span></a></div><p className="event-meta"><span className="status-dot"/>May–June <span className="meta-divider">/</span> San Jose, CA <span className="meta-divider">/</span> Dates coming soon</p></div>
-        <div className="hero-landscape"><div className="landscape-sun"/><Mountains /><Horses /></div>
-        
+        <div className="hero-copy">
+          <h1>Almaden Hacks</h1>
+          <p className="hero-description">Big ideas. A little wild ambition. A high school hackathon from the heart of Almaden.</p>
+          <div className="hero-actions"><EventActions /><a className="text-link" href="#about">Take a look around <span aria-hidden="true">↓</span></a></div>
+          <p className="event-meta"><span className="status-dot" />Leland High School <span className="meta-divider">/</span> San Jose, CA <span className="meta-divider">/</span> May–June</p>
+        </div>
+        <div className="hero-landscape"><div className="landscape-sun" /><Mountains /><Horses /></div>
       </section>
-      <section className="about section-wrap" id="about"><div className="section-kicker">A new starting line</div><div className="about-grid"><h2>Good things happen<br/>when curious people<br/>build together.</h2><div className="about-copy"><p className="lead">From the foothills to your first big idea.</p><p>Almaden Hacks brings the energy of a hackathon to our corner of San Jose. A place to meet your people, try something ambitious, and make a project you didn’t think you could.</p><p>You don’t need a polished pitch or years of experience. Bring a half-formed idea and the urge to see it through. We’ll take it from there, together.</p><a className="text-link" href="#community">Find your people <span aria-hidden="true">↗</span></a></div></div><div className="experience-grid"><article><h3>Make something yours.</h3><p>A useful app. A strange little game. A robot with a purpose. Start with what makes you curious.</p></article><article><h3>Get a little further.</h3><p>Trade ideas, work through a problem, and learn by doing. Your first project is a good place to start.</p></article><article><h3>Leave with your people.</h3><p>Meet other students who get excited about making things. The project is just the beginning.</p></article></div></section>
-      <section className="schedule" id="schedule"><div className="section-wrap schedule-grid"><div><p className="section-kicker">Room for a very good day</p><h2>Come with an idea.<br/>Leave with a story.</h2><p className="schedule-note">Our May–June event is taking shape. Here’s the flow we’re planning; exact times will follow.</p><EventActions className="button button-light" /></div><ol className="timeline">{[["Meet & dream", "Find your team, settle in, and put your idea on the table."], ["Build & explore", "Make a first version. Break it. Make it better. Learn something along the way."], ["Show & celebrate", "Share what you made, see what everyone else built, and celebrate the work."]].map(([title, text], i) => <li key={title}><span className="timeline-number">0{i + 1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol></div></section>
-      <section className="community section-wrap" id="community"><div className="community-copy"><p className="section-kicker">There’s a place for you here</p><h2>The best part?<br/>The people.</h2><p>Find a teammate, swap an idea, or just say hello. Our Discord will be home base for event announcements and the conversations that happen before the first line of code.</p><EventActions kind="discord" /><span className="availability">Community invite coming soon</span></div></section>
-      <section className="sponsors section-wrap" id="sponsors"><div className="sponsor-heading"><div><p className="section-kicker">Help the next idea get started</p><h2>A little support.<br/>A whole lot of possibility.</h2></div><p>Great events are a community effort. Help us make room for the next generation of builders.</p></div><div className="sponsor-board"><div className="sponsor-callout"><h3>Your support belongs here.</h3><p>We’re welcoming our founding sponsors.<br/>The first chapter is still being written.</p><a className="button" href="https://hcb.hackclub.com/almaden-hacks" target="_blank" rel="noreferrer">Support Almaden Hacks <span aria-hidden="true">↗</span></a></div><div className="sponsor-side"><span>Ways to make a difference</span><p>Fuel the day.</p><p>Share your experience.</p><p>Back a new generation.</p><small>Sponsor announcements coming soon.</small></div></div></section>
-      <section className="faq section-wrap" id="faq"><div><p className="section-kicker">A few things you might be wondering</p><h2>Good questions.</h2><p>First hackathon?<br/>You’re in good company.</p></div><div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></section>
-      <section className="closing"><Mountains/><div className="closing-copy"><p>Leland High School presents</p><h2>See you at<br/>the starting line.</h2><EventActions /><span>Almaden Valley, San Jose · May–June</span></div></section>
+
+      <section className="about section-wrap" id="about">
+        <div className="about-grid">
+          <Scramble lines={["Good things happen", "when curious people", "build together."]} />
+          <div className="about-copy" data-reveal><p className="lead">From the foothills to your first big idea.</p><p>Almaden Hacks brings the energy of a hackathon to our corner of San Jose. A place to meet your people, try something ambitious, and make a project you didn’t think you could.</p><p>You don’t need a polished pitch or years of experience. Bring a half-formed idea and the urge to see it through. We’ll take it from there, together.</p><a className="text-link" href="#community">Find your people <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <div className="experience-grid" data-reveal="stagger">
+          <article><div className="card-art"><Donut /></div><h3>Make something yours.</h3><p>A useful app. A strange little game. A robot with a purpose. Start with what makes you curious.</p></article>
+          <article><div className="card-art"><Ridgeline /></div><h3>Get a little further.</h3><p>Trade ideas, work through a problem, and learn by doing. Your first project is a good place to start.</p></article>
+          <article><div className="card-art"><Constellation /></div><h3>Leave with your people.</h3><p>Meet other students who get excited about making things. The project is just the beginning.</p></article>
+        </div>
+      </section>
+
+      <section className="schedule" id="schedule">
+        <div className="section-wrap schedule-grid">
+          <div className="schedule-intro"><Scramble lines={["Come with an idea.", "Leave with a story."]} /><p className="schedule-note">Our May–June event is taking shape. Here’s the flow we’re planning; exact times will follow.</p><EventActions className="button button-light" /><DaySky /></div>
+          <ol className="timeline" data-reveal="stagger">{[["Meet & dream", "Find your team, settle in, and put your idea on the table."], ["Build & explore", "Make a first version. Break it. Make it better. Learn something along the way."], ["Show & celebrate", "Share what you made, see what everyone else built, and celebrate the work."]].map(([title, text], i) => <li key={title}><span className="timeline-number">0{i + 1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol>
+        </div>
+      </section>
+
+      <section className="community section-wrap" id="community">
+        <Scramble lines={["The best part?", "The people."]} />
+        <div className="community-copy" data-reveal><p>Find a teammate, swap an idea, or just say hello. Our Discord will be home base for event announcements and the conversations that happen before the first line of code.</p><EventActions kind="discord" /><span className="availability">Community invite coming soon</span></div>
+      </section>
+
+      <section className="sponsors section-wrap" id="sponsors">
+        <div className="sponsor-heading"><Scramble lines={["A little support.", "A whole lot of possibility."]} /><p data-reveal>Great events are a community effort. Help us make room for the next generation of builders.</p></div>
+        <div className="sponsor-board" data-reveal><div className="sponsor-callout"><h3>Your support belongs here.</h3><p>We’re welcoming our founding sponsors. The first chapter is still being written.</p><a className="button" href="https://hcb.hackclub.com/almaden-hacks" target="_blank" rel="noreferrer">Support Almaden Hacks <span aria-hidden="true">↗</span></a></div><div className="sponsor-side"><p>Fuel the day.</p><p>Share your experience.</p><p>Back a new generation.</p><small>Sponsor announcements coming soon.</small></div></div>
+      </section>
+
+      <section className="faq section-wrap" id="faq">
+        <div className="faq-intro"><Scramble lines={["Good questions."]} /><p data-reveal>First hackathon?<br />You’re in good company.</p><div className="faq-mark"><AsciiText text="?" color="#2d4faa" lens="#c4622d" sway /></div></div>
+        <div className="faq-list" data-reveal>{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div>
+      </section>
+
+      <section className="closing">
+        <div className="closing-copy"><Scramble lines={["See you at", "the starting line."]} /><EventActions /><span>Almaden Valley, San Jose · May–June</span></div>
+        <div className="closing-landscape"><Mountains /><Horses herd="closing" /></div>
+      </section>
     </main>
-    <footer className="footer"><div className="footer-top"><a className="footer-wordmark" href="#top">Almaden Hacks</a><div><a href="#about">About</a><a href="#sponsors">Sponsorship</a><a href="#faq">FAQ</a></div><a href="#top" className="back-top">Back to top ↑</a></div><div className="footer-bottom"><span>Built with a little wild ambition in Almaden.</span><a href="https://hcb.hackclub.com/almaden-hacks" target="_blank" rel="noreferrer">Fiscally sponsored by HCB</a></div><div className="design-credit"><span>Website designed by <a href="https://rishithc.com" target="_blank" rel="noreferrer">Rishith</a></span><a href="https://github.com/rishith-c" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/rishith-chennupati-b4ba202a4/" target="_blank" rel="noreferrer">LinkedIn</a></div></footer>
+    <footer className="footer">
+      <a href="#top" className="footer-wordmark" aria-label="Almaden Hacks, back to top"><AsciiText text="Almaden Hacks" color="#dfe8df" lens="#f0c987" /></a>
+      <div className="footer-top"><div><a href="#about">About</a><a href="#schedule">The day</a><a href="#sponsors">Sponsorship</a><a href="#faq">FAQ</a></div><a href="#top" className="back-top">Back to top ↑</a></div>
+      <div className="footer-bottom"><span>Built with a little wild ambition in Almaden. Presented by Leland High School.</span><a href="https://hcb.hackclub.com/almaden-hacks" target="_blank" rel="noreferrer">Fiscally sponsored by HCB</a></div>
+      <div className="design-credit"><span>Website designed by <a href="https://rishithc.com" target="_blank" rel="noreferrer">Rishith</a></span><a href="https://github.com/rishith-c" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/rishith-chennupati-b4ba202a4/" target="_blank" rel="noreferrer">LinkedIn</a></div>
+    </footer>
   </>;
 }
